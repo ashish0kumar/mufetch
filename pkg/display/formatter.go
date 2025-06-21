@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"image"
 	"net/http"
-	"os"
 	"strings"
 	"time"
 
@@ -26,37 +25,18 @@ const (
 	ColorBold   = "\033[1m"
 )
 
-// ImageRenderer handles terminal image rendering with protocol detection
+// ImageRenderer handles terminal image rendering using Unicode blocks
 type ImageRenderer struct {
-	supportsKitty bool
-	supportsSixel bool
-	width         int
-	height        int
+	width  int
+	height int
 }
 
 // NewImageRenderer creates an image renderer with specified size
 func NewImageRenderer(size int) *ImageRenderer {
 	return &ImageRenderer{
-		supportsKitty: detectKittySupport(),
-		supportsSixel: detectSixelSupport(),
-		width:         size,
-		height:        size,
+		width:  size,
+		height: size,
 	}
-}
-
-// detectKittySupport checks if terminal supports Kitty graphics protocol
-func detectKittySupport() bool {
-	term := os.Getenv("TERM")
-	kittyWindow := os.Getenv("KITTY_WINDOW_ID")
-	return strings.Contains(term, "kitty") || kittyWindow != ""
-}
-
-// detectSixelSupport checks if terminal supports Sixel graphics protocol
-func detectSixelSupport() bool {
-	term := os.Getenv("TERM")
-	return strings.Contains(term, "xterm") ||
-		strings.Contains(term, "mlterm") ||
-		strings.Contains(term, "mintty")
 }
 
 // RenderImageLines converts image URL to terminal-displayable lines
@@ -407,12 +387,12 @@ func displaySideBySideWithLinks(imageLines, infoLines, links []string) {
 
 		// Display remaining image lines after links
 		for i := targetLines + 1; i < len(imageLines); i++ {
-			fmt.Printf("%s  \n", imageLines[i])
+			fmt.Printf("%s   \n", imageLines[i])
 		}
 	} else {
 		// If no links, display remaining image lines normally
 		for i := targetLines; i < len(imageLines); i++ {
-			fmt.Printf("%s  \n", imageLines[i])
+			fmt.Printf("%s   \n", imageLines[i])
 		}
 	}
 }
