@@ -7,8 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"mufetch/pkg/spotify"
-
+	"github.com/ashish0kumar/mufetch/pkg/spotify"
 	"github.com/disintegration/imaging"
 )
 

@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"mufetch/pkg/config"
-	"mufetch/pkg/display"
-	"mufetch/pkg/spotify"
-
+	"github.com/ashish0kumar/mufetch/pkg/config"
+	"github.com/ashish0kumar/mufetch/pkg/display"
+	"github.com/ashish0kumar/mufetch/pkg/spotify"
 	"github.com/spf13/cobra"
 )
+
+// version of the application
+var version = "dev"
 
 // variables to hold command line args and configuration
 var (
@@ -25,6 +27,7 @@ var rootCmd = &cobra.Command{
 	Short: "neofetch-like CLI for music",
 	Long: `mufetch displays beautiful music information with cover art in your terminal.
 Search for tracks, albums, or artists.`,
+	Version: version,
 }
 
 // searchCmd represents the search command

@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"mufetch/pkg/config"
-
+	"github.com/ashish0kumar/mufetch/pkg/config"
 	"github.com/spf13/cobra"
 )
 

@@ -1,4 +1,4 @@
-module mufetch
+module github.com/ashish0kumar/mufetch
 
 go 1.23.2
 
