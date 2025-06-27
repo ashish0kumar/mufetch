@@ -161,10 +161,12 @@ func DisplayTrack(track spotify.Track, client *spotify.Client, imageSize int) {
 	}
 
 	if len(genres) > 0 {
-		genreString := strings.Join(genres, ", ")
-		if len(genreString) > 50 {
-			genreString = genreString[:47] + "..."
+		// Show at most 2 genres
+		displayGenres := genres
+		if len(displayGenres) > 2 {
+			displayGenres = displayGenres[:2]
 		}
+		genreString := strings.Join(displayGenres, ", ")
 		infoLines = append(infoLines, formatInfoLine("Genres", genreString, ColorRed))
 	}
 
@@ -220,10 +222,12 @@ func DisplayAlbum(album spotify.Album, client *spotify.Client, imageSize int) {
 	}
 
 	if len(genres) > 0 {
-		genreString := strings.Join(genres, ", ")
-		if len(genreString) > 50 {
-			genreString = genreString[:47] + "..."
+		// Show at most 2 genres
+		displayGenres := genres
+		if len(displayGenres) > 2 {
+			displayGenres = displayGenres[:2]
 		}
+		genreString := strings.Join(displayGenres, ", ")
 		infoLines = append(infoLines, formatInfoLine("Genres", genreString, ColorRed))
 	}
 
@@ -284,10 +288,11 @@ func DisplayArtist(artist spotify.Artist, client *spotify.Client, imageSize int)
 	}
 
 	if len(artist.Genres) > 0 {
-		genreString := strings.Join(artist.Genres, ", ")
-		if len(genreString) > 50 {
-			genreString = genreString[:47] + "..."
+		displayGenres := artist.Genres
+		if len(displayGenres) > 2 {
+			displayGenres = displayGenres[:2]
 		}
+		genreString := strings.Join(displayGenres, ", ")
 		infoLines = append(infoLines, formatInfoLine("Genres", genreString, ColorRed))
 	}
 
