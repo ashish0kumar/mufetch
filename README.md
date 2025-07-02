@@ -15,6 +15,12 @@
 <img src="./assets/mufetch.png" width="80%" />
 </p>
 
+<p align="center">
+<a href="https://terminaltrove.com/mufetch/">
+<img src="assets/terminal_trove_normal.png" width="25%" />
+</a>
+</p>
+
 ---
 
 ## Features
@@ -154,15 +160,15 @@ Please feel free to open an issue or submit a pull request.
 - [**Viper**](https://github.com/spf13/viper) - Configuration management
 - [**Imaging**](https://github.com/disintegration/imaging) - Image processing and resizing
 
-## License
-
-[MIT License](LICENSE)
-
 ## Acknowledgments
 
 - Inspired by [neofetch](https://github.com/dylanaraps/neofetch) for system information display
 - Thanks to [Spotify Web API](https://developer.spotify.com/documentation/web-api/) for music metadata
 - Unicode block art technique inspired by various terminal image viewers
+
+## License
+
+[MIT License](LICENSE)
 
 <br><br>
 
