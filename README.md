@@ -43,6 +43,12 @@
 
 ## Installation
 
+### Nix
+
+```bash
+nix run nixpkgs#mufetch
+```
+
 ### Via `go install`
 
 ```bash
