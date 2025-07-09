@@ -1,14 +1,6 @@
 <h1 align="center">mufetch</h1>
 
-<div align="center">
-<p>
-<a href="https://github.com/ashish0kumar/mufetch/stargazers"><img src="https://img.shields.io/github/stars/ashish0kumar/mufetch?style=for-the-badge&logo=starship&color=CBA6F7&logoColor=cdd6f4&labelColor=302D41" alt="stars"><a>&nbsp;&nbsp;
-<a href="https://github.com/ashish0kumar/mufetch/releases"><img src="https://img.shields.io/github/v/release/ashish0kumar/mufetch?style=for-the-badge&logo=github&color=CBA6F7&logoColor=cdd6f4&labelColor=302D41" alt="Releases"></a>&nbsp;&nbsp;
-<a href="https://github.com/ashish0kumar/mufetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ashish0kumar/mufetch?style=for-the-badge&logo=googledocs&color=CBA6F7&logoColor=cdd6f4&labelColor=302D41" alt="LICENSE"></a>&nbsp;&nbsp;
-</p>
-</div>
-
-<p align="center"><em>Like neofetch, but for music</em></p>
+<p align="center">Neofetch-style CLI for music</p>
 
 
 <p align="center">
@@ -172,12 +164,16 @@ Please feel free to open an issue or submit a pull request.
 - Thanks to [Spotify Web API](https://developer.spotify.com/documentation/web-api/) for music metadata
 - Unicode block art technique inspired by various terminal image viewers
 
-## License
-
-[MIT License](LICENSE)
-
-<br><br>
+<br>
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
 </p>
+
+<p align="center">
+        <i><code>&copy 2025-present <a href="https://github.com/ashish0kumar">Ashish Kumar</a></code></i>
+</p>
+
+<div align="center">
+<a href="https://github.com/ashish0kumar/mufetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ashish0kumar/mufetch?style=for-the-badge&color=CBA6F7&logoColor=cdd6f4&labelColor=302D41" alt="LICENSE"></a>&nbsp;&nbsp;
+</div>
