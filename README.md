@@ -2,15 +2,17 @@
 
 <p align="center">Neofetch-style CLI for music</p>
 
-
 <p align="center">
 <img src="./assets/mufetch.png" width="80%" />
 </p>
 
 <p align="center">
-<a href="https://terminaltrove.com/mufetch/">
-<img src="assets/terminal_trove_normal.png" width="25%" />
-</a>
+  <i>Supported by</i>
+</p>
+<p align="center">
+  <a href="https://terminaltrove.com/mufetch/">
+    <img width="25%" alt="Terminal Trove logo" src="https://github.com/user-attachments/assets/f85b1470-a574-4bc2-b002-4e6dddb9e277" />
+  </a>
 </p>
 
 ---
