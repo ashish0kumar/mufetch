@@ -59,6 +59,30 @@ sudo mv mufetch /usr/local/bin/
 mufetch --help
 ```
 
+### Enhanced Image Quality
+
+For the best image rendering quality, install `chafa`:
+
+```bash
+# Ubuntu/Debian
+sudo apt install chafa
+
+# macOS
+brew install chafa
+
+# Arch Linux
+sudo pacman -S chafa
+
+# Fedora/RHEL
+sudo dnf install chafa
+
+# Nix
+nix-env -iA nixpkgs.chafa
+```
+
+> [!NOTE]
+> mufetch works without chafa using colorized Unicode blocks, but chafa provides significantly better image quality with enhanced detail.
+
 ## Setup
 
 ### 1. Get Spotify API Credentials
