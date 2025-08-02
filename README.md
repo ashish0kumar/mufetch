@@ -3,7 +3,7 @@
 <p align="center">Neofetch-style CLI for music</p>
 
 <p align="center">
-<img src="./assets/mufetch.png" width="80%" />
+<img src="./assets/ss.png" width="80%" />
 </p>
 
 <p align="center">
@@ -81,7 +81,7 @@ nix-env -iA nixpkgs.chafa
 ```
 
 > [!NOTE]
-> mufetch works without chafa using colorized Unicode blocks, but chafa provides significantly better image quality with enhanced detail.
+> `mufetch` works without chafa using colorized Unicode blocks, but `chafa` provides significantly better image quality with enhanced detail.
 
 ## Setup
 
