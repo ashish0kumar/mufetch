@@ -3,7 +3,10 @@ package display
 import (
 	"fmt"
 	"image"
+	"io"
 	"net/http"
+	"os"
+	"os/exec"
 	"strings"
 	"time"
 
@@ -24,7 +27,7 @@ const (
 	ColorBold   = "\033[1m"
 )
 
-// ImageRenderer handles terminal image rendering using Unicode blocks
+// ImageRenderer handles terminal image rendering using chafa if available
 type ImageRenderer struct {
 	width  int
 	height int
@@ -44,12 +47,90 @@ func (r *ImageRenderer) RenderImageLines(imageURL string) []string {
 		return r.getPlaceholderLines()
 	}
 
+	// Try chafa first if available
+	if r.isChafaAvailable() {
+		if lines := r.renderWithChafa(imageURL); lines != nil {
+			return lines
+		}
+	}
+
+	// Fallback to enhanced ANSI block art
 	img, err := r.downloadImage(imageURL)
 	if err != nil {
 		return r.getPlaceholderLines()
 	}
 
 	return r.getBlockArtLines(img)
+}
+
+// isChafaAvailable checks if chafa command is installed
+func (r *ImageRenderer) isChafaAvailable() bool {
+	_, err := exec.LookPath("chafa")
+	return err == nil
+}
+
+// renderWithChafa uses chafa command to render image
+func (r *ImageRenderer) renderWithChafa(imageURL string) []string {
+	tempFile, err := r.downloadToTemp(imageURL)
+	if err != nil {
+		return nil
+	}
+	defer os.Remove(tempFile)
+
+	cmd := exec.Command("chafa",
+		"--size", fmt.Sprintf("%dx%d", r.width*2, r.height),
+		"--dither", "ordered", // Slightly smoother gradients
+		tempFile)
+
+	output, err := cmd.Output()
+	if err != nil {
+		return nil
+	}
+
+	lines := strings.Split(strings.TrimSpace(string(output)), "\n")
+
+	// Add left padding to each line
+	for i, line := range lines {
+		lines[i] = " " + line
+	}
+
+	// Ensure we have exactly the right number of lines
+	for len(lines) < r.height {
+		lines = append(lines, strings.Repeat(" ", r.width*2+1))
+	}
+	if len(lines) > r.height {
+		lines = lines[:r.height]
+	}
+
+	return lines
+}
+
+// downloadToTemp downloads image to a temporary file
+func (r *ImageRenderer) downloadToTemp(imageURL string) (string, error) {
+	client := &http.Client{Timeout: 30 * time.Second}
+	resp, err := client.Get(imageURL)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("failed to download image: status %d", resp.StatusCode)
+	}
+
+	tempFile, err := os.CreateTemp("", "mufetch-*.jpg")
+	if err != nil {
+		return "", err
+	}
+	defer tempFile.Close()
+
+	_, err = io.Copy(tempFile, resp.Body)
+	if err != nil {
+		os.Remove(tempFile.Name())
+		return "", err
+	}
+
+	return tempFile.Name(), nil
 }
 
 // downloadImage fetches and decodes image from URL
