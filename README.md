@@ -37,6 +37,20 @@
 
 ## Installation
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/mufetch.svg)](https://repology.org/project/mufetch/versions)
+
+### AUR
+
+```bash
+yay -S mufetch
+```
+
+### Homebrew
+
+```bash
+brew install mufetch
+```
+
 ### Nix
 
 ```bash
