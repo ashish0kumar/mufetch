@@ -62,12 +62,7 @@ var searchCmd = &cobra.Command{
 		fmt.Printf("\n")
 
 		// Validate image size
-		if imageSize < 15 {
-			imageSize = 15
-		}
-		if imageSize > 35 {
-			imageSize = 35
-		}
+		imageSize = normalizeImageSize(imageSize)
 
 		// Perform search
 		if searchType == "auto" {
@@ -79,6 +74,16 @@ var searchCmd = &cobra.Command{
 		// Move cursor up and clear the line
 		fmt.Print("\033[F\033[K\n")
 	},
+}
+
+func normalizeImageSize(size int) int {
+	if size < 20 {
+		return 20
+	}
+	if size > 50 {
+		return 50
+	}
+	return size
 }
 
 // searchAuto performs an automatic search based on the query
